@@ -4,22 +4,15 @@
     "password": "mysecretpassword",
     "database": "postgres",
     "host": "localhost",
-    "port": "5433",
+    "port": "5434",
     "dialect": "postgres"
-  },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
   },
   "production": {
     "username": "postgres",
     "password": "mysecretpassword",
     "database": "postgres",
     "host": "localhost",
-    "port": "5433",
+    "port": "5434",
     "dialect": "postgres"
   }
 }
