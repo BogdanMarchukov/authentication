@@ -18,9 +18,13 @@ import { StorageModule } from './modules/storage/storage.module';
     }),
     JwtModule.register({
       global: true,
-      privateKey: readFileSync(join(__dirname, '../', 'secret', 'auth')),
-      publicKey: readFileSync(join(__dirname, '../', 'secret', 'auth.pub')),
-      signOptions: { expiresIn: '24h' },
+      privateKey: readFileSync(
+        join(__dirname, '../', 'secret', 'jwtRS256.key'),
+      ),
+      publicKey: readFileSync(
+        join(__dirname, '../', 'secret', 'jwtRS256.key.pub'),
+      ),
+      signOptions: { expiresIn: '24h', algorithm: 'RS256' },
     }),
     SequelizeModule.forRootAsync({
       imports: [ConfigModule],

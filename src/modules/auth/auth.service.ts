@@ -15,6 +15,14 @@ export class AuthService {
     return bcrypt.hashSync(inputString, 2);
   }
 
+  verifyToken(token: string) {
+    return this.jwtService.verify(token, { algorithms: ['RS256'] });
+  }
+
+  decodeToken(token: string) {
+    return this.jwtService.decode(token);
+  }
+
   async signIn(login: string, password: string, transaction?: Transaction) {
     const user = await User.findOne({
       where: { login },
