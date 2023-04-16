@@ -1,5 +1,10 @@
 version: '3'
 services:
+  redis:
+    restart: always
+    image: redis
+    ports:
+      - "127.0.0.1:6379:6379"
   db:
     image: postgres
     restart: always

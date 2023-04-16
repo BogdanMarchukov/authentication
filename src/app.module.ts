@@ -8,7 +8,8 @@ import { join } from 'path';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { User } from './models/User.model';
-import { UserController } from './modules/user/user.controller';
+import { StorageModule } from './modules/storage/storage.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -36,6 +37,7 @@ import { UserController } from './modules/user/user.controller';
     }),
     UserModule,
     AuthModule,
+    StorageModule,
   ],
 })
 export class AppModule {}
