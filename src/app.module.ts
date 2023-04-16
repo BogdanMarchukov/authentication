@@ -7,6 +7,8 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { User } from './models/User.model';
+import { UserController } from './modules/user/user.controller';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -28,14 +30,12 @@ import { AuthModule } from './modules/auth/auth.module';
         username: configService.get('database.userName') || 'postgres',
         password: configService.get('database.password') || 'mysecretpassword',
         database: configService.get('database.database') || 'postgres',
-        models: [],
+        models: [User],
       }),
       inject: [ConfigService],
     }),
     UserModule,
     AuthModule,
   ],
-  controllers: [],
-  providers: [],
 })
 export class AppModule {}
