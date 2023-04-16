@@ -20,7 +20,6 @@ export class AuthService {
       where: { login },
       transaction,
     });
-    const inputHash = this.getHash(password);
 
     if (!bcrypt.compareSync(password, user.password)) {
       throw new UnauthorizedException();
