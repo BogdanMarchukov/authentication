@@ -2,12 +2,20 @@ import { Module } from '@nestjs/common';
 import configuration from './config/configuration';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
-
+import { JwtModule } from '@nestjs/jwt';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
       load: [configuration],
+    }),
+    JwtModule.register({
+      global: true,
+      privateKey: readFileSync(join(__dirname, '../', 'secret', 'auth')),
+      publicKey: readFileSync(join(__dirname, '../', 'secret', 'auth.pub')),
+      signOptions: { expiresIn: '24h' },
     }),
     SequelizeModule.forRootAsync({
       imports: [ConfigModule],
